@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+</head>
+
+<body>
+    <div class="play-ground">
+        <table class="play">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <div>
+            <script>
+            (function() {
+                 var source = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+                rand, len = 15,
+                temp, _blank, r, c;
+            for (var i = 0; i < 16; i++) {
+                rand = Math.floor((i) + (Math.random() * (16 - i)));
+                temp = source[i];
+                source[i] = source[rand];
+                source[rand] = temp;
+                if (!source[i]) {
+                    _blank = i;
+                    r = Math.floor(_blank / 4);
+                    c = _blank % 4
+                }
+                
+            };
+            console.log(source);
+            var play = document.querySelectorAll(".play td");
+            var render = function() {
+                for (var i = 0; i < 16; i++) {
+                    play[i].innerText = source[i] || "";
+                }
+            };
+            render();
+
+            document.addEventListener("keydown", function(e) {
+                switch (e.keyCode) {
+                    case 37:
+                        //left
+                        handleLeft();
+                        break;
+                    case 38:
+                        //up
+                        handleUp();
+                        break;
+                    case 39:
+                        //right
+                        handleRight();
+                        break;
+                    case 40:
+                        //down
+                        handleDown();
+                        break;
+                    default:
+                }
+            });
+            var swap = function(i, j) {
+                var temp;
+                temp = source[i];
+                source[i] = source[j];
+                source[j] = temp;
+            }
+            var handleLeft = function() {
+                if (c === 3) return;
+                swap(_blank, _blank + 1);
+                _blank = _blank + 1;
+                r = Math.floor(_blank / 4);
+                c = _blank % 4
+                render();
+            }
+            var handleRight = function() {
+                if (c === 0) return;
+                swap(_blank, _blank - 1);
+                _blank = _blank - 1;
+                r = Math.floor(_blank / 4);
+                c = _blank % 4
+                render();
+            }
+            var handleUp = function() {
+                if (r === 3) return;
+                swap(_blank, _blank + 4);
+                _blank = _blank + 4;
+                r = Math.floor(_blank / 4);
+                c = _blank % 4
+                render();
+            }
+            var handleDown = function() {
+                if (r === 0) return;
+                swap(_blank, _blank - 4);
+                _blank = _blank - 4 ;
+                r = Math.floor(_blank / 4);
+                c = _blank % 4
+                render();
+            }
+            })();
+           
+            </script>
+            <!--<script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>-->
+
+            <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+
+            <script>
+            /*
+                                                                (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+                                                                function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+                                                                e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+                                                                e.src='//www.google-analytics.com/analytics.js';
+                                                                r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+                                                                ga('create','UA-XXXXX-X');ga('send','pageview');
+
+                                                            //*/
+            </script>
+</body>
+
+</html>
